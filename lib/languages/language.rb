@@ -44,7 +44,7 @@ module Languages
     end
 
     def <=>(other)
-      iso369_3 <=> other.iso639_3
+      other.iso639_3 <=> iso639_3
     end
   end
 end
