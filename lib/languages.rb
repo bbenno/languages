@@ -44,20 +44,23 @@ module Languages
 
     private
 
-    # @param [Symbol] key
-    # @return [Language]
+    # Returns language associated with ISO 639-1 identifier
+    # @param [Symbol] key ISO 639-1 identifier
+    # @return [Language,NilClass] language with associated with the identifier; otherwise +nil+
     def get_by_alpha2(key)
       @@data.detect { |l| l.iso639_1 == key }
     end
 
-    # @param [Symbol] key
-    # @return [Language]
+    # Returns language associated with ISO 639-2 or ISO 639-3 identifier
+    # @param [Symbol] key ISO 639-2 or ISO 639-3 identifier
+    # @return [Language,NilClass] language with associated with the identifier; otherwise +nil+
     def get_by_alpha3(key)
       @@data.detect { |l| l.iso639_3 == key || l.iso639_2b == key || l.iso639_2t == key }
     end
 
-    # @param [String] name
-    # @return [Language]
+    # Returns language associated with ISO 639-3 reference name
+    # @param [String] name reference name (english)
+    # @return [Language,NilClass] language with associated with the name; otherwise +nil+
     def get_by_name(name)
       @@data.detect { |l| l.name.downcase == name.downcase }
     end
