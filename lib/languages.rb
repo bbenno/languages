@@ -47,6 +47,18 @@ module Languages
       @@data
     end
 
+    def names
+      @@data.map(&:name)
+    end
+
+    def alpha2_codes
+      @@data.map(&:alpha2).compact
+    end
+
+    def alpha3_codes
+      @@data.map(&:alpha3)
+    end
+
     private
 
     # Returns language associated with ISO 639-1 identifier

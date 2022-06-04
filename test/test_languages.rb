@@ -38,8 +38,12 @@ class TestLanguages < Minitest::Test
     refute(::Languages.all.map(&:type).any?(&:nil?))
   end
 
-  def test_all_languages_have_a_scope
-    refute(::Languages.all.map(&:scope).any?(&:nil?))
+  def test_all_languages_have_a_name
+    refute(::Languages.all.map(&:name).any? { |n| n.nil? || n.empty? })
+  end
+
+  def test_all_languages_have_a_alpha3
+    refute(::Languages.all.map(&:alpha3).any?(&:nil?))
   end
 
   %i[iso639_1 iso639_2b iso639_2t iso639_3 name].each do |attr|

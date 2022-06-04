@@ -8,8 +8,12 @@ module Languages
   @@data: Array[Language]
 
   def self?.[]: (String | Symbol) -> Language?
-  def self?.all: () -> Array[Language]
   def self?.search: (String|Regexp) -> Array[Language]
+
+  def self?.all: () -> Array[Language]
+  def self?.names: () -> Array[String]
+  def self?.alpha2_codes: () -> Array[Symbol]
+  def self?.alpha3_codes: () -> Array[Symbol]
 
   def self?.special_languages: () -> Array[Language]
   def self?.macrolanguages:() -> Array[Language]
