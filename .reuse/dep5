@@ -1,0 +1,12 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: languages
+Upstream-Contact: Benno Bielmeier <git@bbenno.com>
+Source: https://github.com/bbenno/languages
+
+Files: *
+Copyright: 2022 Benno Bielmeier <git@bbenno.com>
+License: MIT
+
+Files: data/*
+Copyright: 2022 SIL International <iso639-3@sil.org>
+License: LicenseRef-ISO639-3ToU
