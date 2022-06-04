@@ -19,6 +19,12 @@ class TestLanguage < Minitest::Test
     assert_instance_of String, @language.name
   end
 
+  def test_equality_depends_on_iso639_3
+    other_language = ::Languages::Language.new(id: 'tlh', part2b: nil, part2t: nil, part1: nil, scope: nil,
+                                               language_type: nil, ref_name: nil)
+    assert @language == other_language
+  end
+
   ::Languages::TYPES.each do |type|
     define_method "test_that_respond_to_#{type}?" do
       assert_respond_to @language, "#{type}?"

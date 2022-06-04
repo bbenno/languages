@@ -3,6 +3,8 @@
 module Languages
   # Language defined in ISO 639-3
   class Language
+    include Comparable
+
     attr_reader :iso639_1, :iso639_2b, :iso639_2t, :iso639_3, :scope, :type, :name # , :comment
 
     def initialize(csv_attributes) # rubocop:disable Metrics/AbcSize
@@ -41,6 +43,16 @@ module Languages
       define_method "#{method_name}?" do
         self.scope == scope
       end
+    end
+
+    def ==(other)
+      other.class == self.class && other.iso639_3 == iso639_3
+    end
+
+    alias eql? ==
+
+    def hash
+      iso639_3.hash
     end
 
     def <=>(other)

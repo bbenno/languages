@@ -55,6 +55,9 @@ module Languages
     def living?: () -> bool
     def special?: () -> bool
 
+    def ==: (untyped) -> bool
+    alias eql? ==
+    def hash: () -> Integer
     def <=>: (Language) -> Integer
   end
 end
