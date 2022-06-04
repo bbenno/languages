@@ -1,0 +1,57 @@
+module Languages
+  VERSION: String
+  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+
+  TYPES: Array[String]
+  SCOPES: Array[String]
+
+  @@data: Array[Language]
+
+  def self.[]: (String | Symbol) -> Language?
+  def self.all: () -> Array[Language]
+
+  def self.special_language: () -> Array[Language]
+  def self.macrolanguage:() -> Array[Language]
+  def self.individual_language: () -> Array[Language]
+
+  def self.ancient: () -> Array[Language]
+  def self.constructed: () -> Array[Language]
+  def self.extinct: () -> Array[Language]
+  def self.historical: () -> Array[Language]
+  def self.living: () -> Array[Language]
+  def self.special: () -> Array[Language]
+
+  class Language
+    attr_reader iso639_1: Symbol?
+    attr_reader iso639_2b: Symbol?
+    attr_reader iso639_2t: Symbol?
+    attr_reader iso639_3: Symbol
+    attr_reader scope: String
+    attr_reader type: String
+    attr_reader name: String
+
+    alias iso639_2 iso639_2t
+    alias iso639_5 iso639_2
+
+    alias alpha2 iso639_1
+    alias alpha3 iso639_3
+    alias alpha3_bibliographic iso639_2b
+    alias alpha3_terminology iso639_2t
+
+
+    def initialize: (csv_attributes: Hash) -> void
+
+    def to_s: () -> String
+
+    def special_language?: () -> bool
+    def macrolanguage? :() -> bool
+    def individual_language?: () -> bool
+
+    def ancient?: () -> bool
+    def constructed?: () -> bool
+    def extinct?: () -> bool
+    def historical?: () -> bool
+    def living?: () -> bool
+    def special?: () -> bool
+  end
+end

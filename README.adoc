@@ -1,0 +1,93 @@
+= Languages
+Benno Bielmeier
+:source-language: ruby
+
+Provides all known human languages defined in ISO 639-3.
+This includes all individual languages already accounted for in ISO 639-2 as well as extinct, ancient, constructed, and historical languages.
+
+The link:data/[data] is taken from the ISO 639-3 registration authority (ISO 639-3/RA) https://iso639-3.sil.org/[SIL International].
+
+== Installation
+
+Add this line to your application’s Gemfile:
+[source]
+----
+gem 'languages'
+----
+
+And then execute:
+....
+$ bundle install
+....
+
+Or install it yourself as:
+....
+$ gem install languages
+....
+
+== Usage
+
+After loading the gem with `require 'languages'` one can retrieve certain languages as following:
+[source]
+----
+# Retrieve a language by its ISO 639-1, ISO 639-2, ISO 639-3 code, or by its reference name (english)
+german = Languages[:de]
+english = Languages['eng']     # Symbol or String does not matter => no pre conversion required
+klingon = Languages['KLINgon'] # So does the casing => do not worry about it
+
+# Since ISO 639-3 categorizes the languages by scope and type, one can filter by them
+# By scope
+Languages.ancient
+Languages.constructed
+Languages.extinct
+Languages.historical
+Languages.living
+Languages.special
+
+# By languages types
+Languages.individual_languages
+Languages.macrolanguages
+Languages.special_languages
+----
+
+Custom language selections can be done accessing `Languages.all`:
+[source]
+----
+Languages.all.select { |l| l.name.start_with? "Ge" }
+----
+
+The `Language` objects have a simple read-only interface:
+[source]
+----
+language = Language[:tlh]
+language.name                 # => Klingon
+language.alpha2               # => nil
+language.alpha3               # => :tlh
+language.alpha3_bibliographic # => :tlh
+language.alpha3_terminology   # => :tlh
+language.type                 # => "constructed"
+language.scope                # => "individual"
+
+language.extinct?             # => false
+language.constructed?         # => true
+language.individual_language? # => true
+----
+
+== Development
+
+After checking out the repo, run `bin/setup` to install dependencies.
+Then, run `rake test` to run the tests.
+You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`.
+To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to https://rubygems.org[rubygems.org].
+
+Following https://semver.org/[Semantic Versioning 2.0.0].
+
+== Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/bbenno/languages.
+
+== License
+
+The gem is available as open source under the terms of the https://opensource.org/licenses/MIT[MIT License].
