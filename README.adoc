@@ -2,6 +2,13 @@
 Benno Bielmeier
 :source-language: ruby
 
+
+image:https://api.reuse.software/badge/github.com/bbenno/languages[link="https://api.reuse.software/info/github.com/bbenno/languages", alt="REUSE status"]
+image:https://img.shields.io/github/v/tag/bbenno/languages[GitHub tag (latest SemVer)]
+
+image:https://img.shields.io/maintenance/yes/2022[Maintenance]
+image:https://github.com/bbenno/languages/actions/workflows/main.yml/badge.svg[link="https://github.com/bbenno/languages/actions/workflows/main.yml"]
+
 Provides all known human languages defined in ISO 639-3.
 This includes all individual languages already accounted for in ISO 639-2 as well as extinct, ancient, constructed, and historical languages.
 
