@@ -6,7 +6,7 @@ module Languages
     attr_reader :iso639_1, :iso639_2b, :iso639_2t, :iso639_3, :scope, :type, :name # , :comment
 
     def initialize(csv_attributes) # rubocop:disable Metrics/AbcSize
-      @iso639_3 = csv_attributes.fetch(:id)&.to_sym
+      @iso639_3 = csv_attributes.fetch(:id).to_sym
       @iso639_2b = csv_attributes.fetch(:part2b)&.to_sym
       @iso639_2t = csv_attributes.fetch(:part2t)&.to_sym
       @iso639_1 = csv_attributes.fetch(:part1)&.to_sym
