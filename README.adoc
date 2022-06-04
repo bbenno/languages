@@ -35,6 +35,13 @@ german = Languages[:de]
 english = Languages['eng']     # Symbol or String does not matter => no pre conversion required
 klingon = Languages['KLINgon'] # So does the casing => do not worry about it
 
+# Get all languages
+Languages.all
+
+# Search by name
+Languages.search "^Germ"
+Languages.search /\AJapan/
+
 # Since ISO 639-3 categorizes the languages by scope and type, one can filter by them
 # By scope
 Languages.ancient
@@ -53,7 +60,7 @@ Languages.special_languages
 Custom language selections can be done accessing `Languages.all`:
 [source]
 ----
-Languages.all.select { |l| l.name.start_with? "Ge" }
+Languages.all.select { |l| %w[ancient historical].include?(l.type) }
 ----
 
 The `Language` objects have a simple read-only interface:

@@ -47,4 +47,24 @@ class TestLanguages < Minitest::Test
       assert_nil(::Languages.all.map(&:"#{attr}").compact.tally.detect { |_, c| c > 1 })
     end
   end
+
+  def test_search_provides_enumerable
+    assert_kind_of Enumerable, ::Languages.search('Japanese')
+  end
+
+  def test_search_with_string_pattern
+    pattern = 'Japanese'
+    search_result = ::Languages.search(pattern)
+
+    assert(search_result.map(&:name).all? { |n| n.match?(pattern) })
+    refute((Languages.all - search_result).map(&:name).any? { |n| n.match?(pattern) })
+  end
+
+  def test_search_with_regex_pattern
+    pattern = /\AG[ea]/
+    search_result = ::Languages.search(pattern)
+
+    assert(search_result.map(&:name).all? { |n| n.match?(pattern) })
+    refute((Languages.all - search_result).map(&:name).any? { |n| n.match?(pattern) })
+  end
 end

@@ -38,6 +38,11 @@ module Languages
       end
     end
 
+    def search(pattern)
+      @@data.select { |l| l.name.match? pattern }
+    end
+
+    # Returns all human known languages, specified in ISO 639-3
     def all
       @@data
     end
