@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'net/http'
+
+url = 'https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab'
+file_path = "#{__dir__}/../data/iso-639-3.tsv"
+File.write(file_path, Net::HTTP.get(URI.parse(url)))
