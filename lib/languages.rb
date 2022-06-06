@@ -30,7 +30,7 @@ module Languages
     end
 
     def [](key)
-      key = key.to_s
+      key = key.to_s.downcase
       case key.size
       when 3 then get_by_alpha3(key.to_sym)
       when 2 then get_by_alpha2(key.to_sym)

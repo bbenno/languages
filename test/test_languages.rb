@@ -62,6 +62,12 @@ class TestLanguages < Minitest::Test
     assert_nil(::Languages[:invalid])
   end
 
+  def test_single_language_lookup_key_is_case_insensitive
+    %w[de deu German].each do |key|
+      assert_equal(::Languages[key], ::Languages[key.upcase])
+    end
+  end
+
   def test_search_provides_enumerable
     assert_kind_of Enumerable, ::Languages.search('Japanese')
   end
