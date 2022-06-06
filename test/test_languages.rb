@@ -87,4 +87,22 @@ class TestLanguages < Minitest::Test
     assert(search_result.map(&:name).all? { |n| n.match?(pattern) })
     refute((Languages.all - search_result).map(&:name).any? { |n| n.match?(pattern) })
   end
+
+  def test_search_is_case_sensitive
+    pattern1 = 'Germ'
+    pattern2 = pattern1.downcase
+    search_result1 = ::Languages.search(pattern1)
+    search_result2 = ::Languages.search(pattern2)
+
+    refute_equal(search_result1.count, search_result2.count)
+  end
+
+  def test_search_can_be_case_sensitive_if_specified
+    pattern1 = 'Germ'
+    pattern2 = /germ/i
+    search_result1 = ::Languages.search(pattern1)
+    search_result2 = ::Languages.search(pattern2)
+
+    assert_equal(search_result1.count, search_result2.count)
+  end
 end

@@ -65,6 +65,8 @@ Languages.search "^Germ"
 Languages.search /\AJapan/
 ----
 
+CAUTION: `Languages.search` is case-sensitive unless specified explicitly, e.g. using `/search_pattern/i`.
+
 .Since ISO 639-3 categorizes the languages by scope and type, one can filter by them
 [source]
 ----
