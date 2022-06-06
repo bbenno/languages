@@ -10,7 +10,7 @@ image:https://github.com/bbenno/languages/actions/workflows/main.yml/badge.svg[l
 
 Simple, dependency-less gem providing all known human languagesfootnote:[This includes all individual languages already accounted for in ISO 639-2 as well as extinct, ancient, constructed, and historical languages.] defined in ISO 639-3
 
-The link:data/[data] is taken from the ISO 639-3 registration authority (ISO 639-3/RA) https://iso639-3.sil.org/[SIL International].
+The ISO code set in link:data/[data/] is taken from the official ISO 639-3 registration authority (ISO 639-3/RA) https://iso639-3.sil.org/[SIL International].
 
 == Installation
 
@@ -130,4 +130,4 @@ The gem is
 
 * available as open source under the terms of the https://opensource.org/licenses/MIT[MIT License].
 * https://reuse.software/[REUSE] compliant
-* uses ISO 639-3 code table from http://www.iso639-3.sil.org/ under their terms of use
+* uses ISO 639-3 code table from http://www.iso639-3.sil.org/ under their https://iso639-3.sil.org/code_tables/download_tables#termsofuse[terms of use]
