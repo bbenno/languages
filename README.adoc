@@ -34,22 +34,42 @@ $ gem install languages
 
 == Usage
 
-After loading the gem with `require 'languages'` one can retrieve certain languages as following:
+.Foremost, load the gem
+[source]
+require 'languages'
+
+=== Library Interface
+
+The following examples show, how to get a language by its ISO 639-1 code, ISO 639-2 code, ISO 639-3 code, or by its (English) reference name.
+The codes should be passed as String or Symbol, whereby the casing in both options does not matter.
+
+.Retrieving single languages
 [source]
 ----
-# Retrieve a language by its ISO 639-1, ISO 639-2, ISO 639-3 code, or by its reference name (english)
-german = Languages[:de]
-english = Languages['eng']     # Symbol or String does not matter => no pre conversion required
-klingon = Languages['KLINgon'] # So does the casing => do not worry about it
+german = Languages[:de]        # passing ISO 639-1 code returns the corresponding Language object
+english = Languages[:eng]      # also works with ISO 639-2 and ISO 639-3 codes
+italian = Languages['ita']     # even if passed as String
 
-# Get all languages
+russian = Languages['Russian'] # Languages can be retrieved via reference name, too
+klingon = Languages['KLINgon'] # weird casing, but still works
+
+invalid = Languages[:invalid]  # invalid or unknown names or ISO codes returns nil
+----
+
+.Get all ISO 639-3 languages
+[source]
 Languages.all
 
-# Search by name
+.Get languages by name
+[source]
+----
 Languages.search "^Germ"
 Languages.search /\AJapan/
+----
 
-# Since ISO 639-3 categorizes the languages by scope and type, one can filter by them
+.Since ISO 639-3 categorizes the languages by scope and type, one can filter by them
+[source]
+----
 # By scope
 Languages.ancient
 Languages.constructed
@@ -64,26 +84,27 @@ Languages.macrolanguages
 Languages.special_languages
 ----
 
-Custom language selections can be done accessing `Languages.all`:
+.Further custom language selections can be implemented using `Languages.all`
 [source]
-----
 Languages.all.select { |l| %w[ancient historical].include?(l.type) }
-----
+
+=== Data Objects
 
 The `Language` objects have a simple read-only interface:
 [source]
 ----
-language = Language[:tlh]
-language.name                 # => Klingon
-language.alpha2               # => nil
-language.alpha3               # => :tlh
-language.alpha3_bibliographic # => :tlh
-language.alpha3_terminology   # => :tlh
-language.type                 # => "constructed"
+language = Language[:fr]
+
+language.name                 # => French
+language.alpha2               # => :fr   (alias for #iso639_1)
+language.alpha3               # => :fra  (alias for #iso639_3)
+language.alpha3_bibliographic # => :fre  (alias for #iso_639_2b)
+language.alpha3_terminology   # => :fra  (alias for #iso_639_2t)
+language.type                 # => "living"
 language.scope                # => "individual"
 
 language.extinct?             # => false
-language.constructed?         # => true
+language.living?              # => true
 language.individual_language? # => true
 ----
 
