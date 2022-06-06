@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    languages (0.5.0)
+    human_languages (0.5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -37,7 +37,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  languages!
+  human_languages!
   minitest (~> 5.0)
   rake (~> 13.0)
   rubocop (~> 1.21)

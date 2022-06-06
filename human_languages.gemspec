@@ -3,7 +3,7 @@
 require_relative 'lib/languages/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'languages'
+  spec.name = 'human_languages'
   spec.version = Languages::VERSION
   spec.authors = ['Benno Bielmeier']
   spec.email = ['git@bbenno.com']
