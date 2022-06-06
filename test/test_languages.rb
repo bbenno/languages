@@ -52,6 +52,16 @@ class TestLanguages < Minitest::Test
     end
   end
 
+  def test_single_language_lookup_key_can_be_string_or_symbol
+    %i[de deu German].each do |key|
+      assert_equal(::Languages[key], ::Languages[key.to_s])
+    end
+  end
+
+  def test_single_language_lookup_returns_nil_if_not_found
+    assert_nil(::Languages[:invalid])
+  end
+
   def test_search_provides_enumerable
     assert_kind_of Enumerable, ::Languages.search('Japanese')
   end
