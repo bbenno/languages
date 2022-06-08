@@ -7,13 +7,13 @@ module Languages
 
     attr_reader :iso639_1, :iso639_2b, :iso639_2t, :iso639_3, :scope, :type, :name # , :comment
 
-    def initialize(csv_attributes) # rubocop:disable Metrics/AbcSize
+    def initialize(csv_attributes) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
       @iso639_3 = csv_attributes.fetch(:id).to_sym
       @iso639_2b = csv_attributes.fetch(:part2b)&.to_sym
       @iso639_2t = csv_attributes.fetch(:part2t)&.to_sym
       @iso639_1 = csv_attributes.fetch(:part1)&.to_sym
-      @scope = SCOPES.detect { |s| s.chr.upcase == csv_attributes.fetch(:scope) }
-      @type = TYPES.detect { |t| t.chr.upcase == csv_attributes.fetch(:language_type) }
+      @scope = SCOPES.detect { |s| s.chr.upcase == csv_attributes.fetch(:scope) }&.to_sym
+      @type = TYPES.detect { |t| t.chr.upcase == csv_attributes.fetch(:language_type) }&.to_sym
       @name = csv_attributes.fetch(:ref_name)
       # @comment = csv_attributes.fetch(:comment)
     end
@@ -32,7 +32,7 @@ module Languages
 
     TYPES.each do |type|
       define_method "#{type}?" do
-        self.type == type
+        self.type == type.to_sym
       end
     end
 
@@ -41,7 +41,7 @@ module Languages
       method_name = scope.end_with?('language') ? scope : "#{scope}_language"
 
       define_method "#{method_name}?" do
-        self.scope == scope
+        self.scope == scope.to_sym
       end
     end
 
