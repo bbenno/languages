@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2022-06-08
+
+### Changed
+
+- Name of gem `languages` -> `human_languages`
+- Language's attribute `scope` is now a Symbol (previously String)
+- Language's attribute `type` is now a Symbol (previously String)
+
 ## [0.5.0] - 2022-06-06
 
 ### Changed
