@@ -17,7 +17,7 @@ The ISO code set in link:data/[data/] is taken from the official ISO 639-3 regis
 Add this line to your application’s Gemfile:
 [source]
 ----
-gem 'languages'
+gem 'human_languages'
 ----
 
 And then execute:
@@ -27,7 +27,7 @@ $ bundle install
 
 Or install it yourself as:
 ....
-$ gem install languages
+$ gem install human_languages
 ....
 
 == Usage
