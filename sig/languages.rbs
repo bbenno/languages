@@ -8,7 +8,7 @@ module Languages
   @@data: Array[Language]
 
   def self?.[]: (String | Symbol) -> Language?
-  def self?.search: (String|Regexp) -> Array[Language]
+  def self?.search: (String|Regexp pattern, ?bool case_sensitive) -> Array[Language]
 
   def self?.all: () -> Array[Language]
   def self?.names: () -> Array[String]

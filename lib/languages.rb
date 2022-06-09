@@ -38,7 +38,8 @@ module Languages
       end
     end
 
-    def search(pattern)
+    def search(pattern, case_sensitive: true)
+      pattern = Regexp.new(pattern, Regexp::IGNORECASE).freeze unless case_sensitive
       @@data.select { |l| l.name.match? pattern }
     end
 

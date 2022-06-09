@@ -105,4 +105,12 @@ class TestLanguages < Minitest::Test
 
     assert_equal(search_result1.count, search_result2.count)
   end
+
+  def test_search_is_case_insensitive_if_specified
+    pattern = 'Germ'
+    search_result1 = ::Languages.search(pattern)
+    search_result2 = ::Languages.search(pattern, case_sensitive: false)
+
+    assert_equal(search_result1.count, search_result2.count)
+  end
 end
