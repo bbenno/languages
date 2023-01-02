@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in languages.gemspec
 gemspec
 
-gem 'minitest', '~> 5.16'
+gem 'minitest', '~> 5.17'
 gem 'rake', '~> 13.0'
 gem 'rubocop', '~> 1.41'
 gem 'rubocop-minitest', '~> 0.25.1'
