@@ -16,7 +16,7 @@ module Languages
   class << self
     TYPES.each do |type|
       define_method type do
-        @@data.select { |l| l.public_send("#{type}?") }
+        all.select { |l| l.public_send("#{type}?") }
       end
     end
 
@@ -25,7 +25,7 @@ module Languages
       scope = "#{scope}_language" unless scope.end_with? 'language'
 
       define_method "#{scope}s" do
-        @@data.select { |l| l.public_send("#{scope}?") }
+        all.select { |l| l.public_send("#{scope}?") }
       end
     end
 
@@ -40,24 +40,24 @@ module Languages
 
     def search(pattern, case_sensitive: true)
       pattern = Regexp.new(pattern, Regexp::IGNORECASE).freeze unless case_sensitive
-      @@data.select { |l| l.name.match? pattern }
+      all.select { |l| l.name.match? pattern }
     end
 
     # Returns all human known languages, specified in ISO 639-3
     def all
-      @@data
+      @@data.values
     end
 
     def names
-      @@data.map(&:name)
+      all.map(&:name)
     end
 
     def alpha2_codes
-      @@data.map(&:alpha2).compact
+      all.map(&:alpha2).compact
     end
 
     def alpha3_codes
-      @@data.map(&:alpha3)
+      all.map(&:alpha3)
     end
 
     private
@@ -66,21 +66,21 @@ module Languages
     # @param [Symbol] key ISO 639-1 identifier
     # @return [Language,NilClass] language with associated with the identifier; otherwise +nil+
     def get_by_alpha2(key)
-      @@data.detect { |l| l.iso639_1 == key }
+      all.detect { |l| l.iso639_1 == key }
     end
 
     # Returns language associated with ISO 639-2 or ISO 639-3 identifier
     # @param [Symbol] key ISO 639-2 or ISO 639-3 identifier
     # @return [Language,NilClass] language with associated with the identifier; otherwise +nil+
     def get_by_alpha3(key)
-      @@data.detect { |l| l.iso639_3 == key || l.iso639_2b == key || l.iso639_2t == key }
+      all.detect { |l| l.iso639_3 == key || l.iso639_2b == key || l.iso639_2t == key }
     end
 
     # Returns language associated with ISO 639-3 reference name
     # @param [String] name reference name (english)
     # @return [Language,NilClass] language with associated with the name; otherwise +nil+
     def get_by_name(name)
-      @@data.detect { |l| l.name.downcase == name.downcase }
+      all.detect { |l| l.name.downcase == name.downcase }
     end
   end
 end
