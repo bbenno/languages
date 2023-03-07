@@ -8,11 +8,6 @@ require_relative 'languages/language'
 
 # Provides living, extinct, ancient, historic, and constructed languages, specified in ISO 639-3
 module Languages
-  @@data = CSV.read(File.join(File.dirname(__FILE__), '../data/iso-639-3.tsv'), headers: true, col_sep: "\t") # rubocop:disable Style/ClassVars
-              .map { |row| row.to_h.transform_keys { |k| k.downcase.to_sym } }
-              .map { |h| Language.new(h) }
-              .freeze
-
   class << self
     TYPES.each do |type|
       define_method type do
@@ -45,7 +40,7 @@ module Languages
 
     # Returns all human known languages, specified in ISO 639-3
     def all
-      @@data.values
+      data.values
     end
 
     def names
@@ -73,7 +68,7 @@ module Languages
     # @param [Symbol] key ISO 639-2 or ISO 639-3 identifier
     # @return [Language,NilClass] language with associated with the identifier; otherwise +nil+
     def get_by_alpha3(key)
-      all.detect { |l| l.iso639_3 == key || l.iso639_2b == key || l.iso639_2t == key }
+      data[key] || all.detect { |l| l.iso639_2b == key || l.iso639_2t == key }
     end
 
     # Returns language associated with ISO 639-3 reference name
@@ -82,5 +77,24 @@ module Languages
     def get_by_name(name)
       all.detect { |l| l.name.downcase == name.downcase }
     end
+
+    private # rubocop:disable Lint/UselessAccessModifier
+
+    def data
+      @@data
+    end
+
+    def load_tsv_data(filename)
+      CSV.read(File.join(File.dirname(__FILE__), "../data/#{filename}"), headers: true, col_sep: "\t")
+    end
   end
+
+  @@data = load_tsv_data('iso-639-3.tsv') # rubocop:disable Style/ClassVars
+           .map { |row| row.to_h.transform_keys { |k| k.downcase.to_sym } }
+           .each_with_object({}) { |l, h| h[l[:id].to_sym] = Language.new(l) }
+           .freeze
+
+  load_tsv_data('iso-639-3-macrolanguages.tsv')
+    # Ignore deprecated mappings (i.e. row[2] = 'R')
+    .each { |row| data[row[1].to_sym].instance_variable_set(:@macrolanguage, data[row[0].to_sym]) if row[2] == 'A' }
 end

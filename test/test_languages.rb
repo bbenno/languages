@@ -113,4 +113,16 @@ class TestLanguages < Minitest::Test
 
     assert_equal(search_result1.count, search_result2.count)
   end
+
+  def test_reference_to_macrolanguage
+    language = ::Languages[:wuu]
+
+    refute_nil(language.macrolanguage)
+  end
+
+  def test_macrolanguages_have_no_macrolanguage
+    macrolanguages = ::Languages.macrolanguages
+
+    assert_empty(macrolanguages.reject { |l| l.macrolanguage.nil? })
+  end
 end

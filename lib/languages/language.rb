@@ -5,7 +5,7 @@ module Languages
   class Language
     include Comparable
 
-    attr_reader :iso639_1, :iso639_2b, :iso639_2t, :iso639_3, :scope, :type, :name # , :comment
+    attr_reader :iso639_1, :iso639_2b, :iso639_2t, :iso639_3, :scope, :type, :name, :macrolanguage # , :comment
 
     def initialize(csv_attributes) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
       @iso639_3 = csv_attributes.fetch(:id).to_sym

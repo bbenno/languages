@@ -3,6 +3,14 @@
 
 require 'net/http'
 
-url = 'https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab'
-file_path = "#{__dir__}/../data/iso-639-3.tsv"
-File.write(file_path, Net::HTTP.get(URI.parse(url)))
+def download_file(filename)
+  src = URI.parse("https://iso639-3.sil.org/sites/iso639-3/files/downloads/#{filename}.tab")
+  dest = "#{__dir__}/../data/#{filename}.tsv"
+  File.write(dest, Net::HTTP.get(src))
+end
+
+# Download ISO 639-3 data
+download_file('iso-639-3')
+
+# Download macrolanguage data
+download_file('iso-639-3-macrolanguages')

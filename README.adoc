@@ -115,14 +115,21 @@ language.living?              # => true
 language.individual_language? # => true
 ----
 
-== I18n
+Some languages of scope `individual` have a reference to their macrolanguage (scope `macrolanguage) that they belong to.
+More information on macrolanguages can be found https://iso639-3.sil.org/about/scope#Macrolanguages[here].
 
-Currently, this gem comes without any translation names for the languages for memory reasons.
+[source]
+----
+language = Language[:wuu]
+language.individual_language? # => true
 
-Certain translations could be added to an project as follows:
+macrolanguage = language.macrolanguage
 
-. Download the PO file for the intended translation language from https://salsa.debian.org/iso-codes-team/iso-codes[]
-. Download file:bin/i18n[] to convert the `.po` to `.yml` file
+macrolanguage.alpha3        # => "zho"
+macrolanguage.name          # => "Chinese"
+macrolanguage.scope         # => :macrolanguage
+macrolanguage.macrolanguage # => nil
+----
 
 == Related Gems and Differences
 
