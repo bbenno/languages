@@ -115,6 +115,59 @@ language.living?              # => true
 language.individual_language? # => true
 ----
 
+== I18n
+
+Currently, this gem comes without any translation names for the languages for memory reasons.
+
+Certain translations could be added to an project as follows:
+
+. Download the PO file for the intended translation language from https://salsa.debian.org/iso-codes-team/iso-codes[]
+. Download file:bin/i18n[] to convert the `.po` to `.yml` file
+
+== Related Gems and Differences
+
+Why to build another gem for ISO 639?
+
+.Overview
+[%header,cols="2,1,2,2,3"]
+|===
+|Gem
+|ISO 639-1/-2
+|ISO 639-3
+|Translations
+|Data Storage
+
+|https://rubygems.org/gems/iso639[iso639]
+|✅
+|❌
+|French
+|Collection of Hashes
+
+|https://rubygems.org/gems/iso-639[iso-639]
+|✅
+|❌
+|French
+|Array of Arrays
+
+|https://rubygems.org/gems/iso-639-data[iso-639-data]
+|✅
+|(✅) only scope individual
+|French for ISO 639-2
+|Hash of Hashes
+
+|https://rubygems.org/gems/language_list[language_list]
+|✅
+|(✅) only scope individual
+|-
+|Array of Language-Objects
+
+|https://rubygems.org/gems/human_languages[human_languages]
+|✅
+|✅
+|-
+|Array of Language-Objects
+|===
+
 == Development
 
 After checking out the repo, run `bin/setup` to install dependencies.
