@@ -34,6 +34,7 @@ module Languages
     attr_reader scope: String
     attr_reader type: String
     attr_reader name: String
+    attr_reader macrolanguage: Language?
 
     alias iso639_2 iso639_2t
     alias iso639_5 iso639_2
