@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `macrolanguage` reference for languages of scope `individual` that belong to a macrolanguage.
+- Add overview table in README about related and similar gems.
+- Add option to search language by name case insensitively.
+
+### Fixed
+
+- Installation instruction in README: wrong gem name, correct is `human_languages`
+
+### Changed
+
+- Update ISO 639 data incorporating approved [2022 changes](https://iso639-3.sil.org/sites/iso639-3/files/reports/639-3_ChangeRequests_2022_Summary.pdf).
+
 ## [0.6.0] - 2022-06-08
 
 ### Changed
