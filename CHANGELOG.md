@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Add collective language codes from ISO 639-5
+
 ## [0.7.0] - 2023-03-08
 
 ### Added

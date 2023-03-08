@@ -2,6 +2,7 @@
 
 require 'test_helper'
 
+# rubocop:disable Metrics/ClassLength
 class TestLanguages < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil ::Languages::VERSION
@@ -125,4 +126,17 @@ class TestLanguages < Minitest::Test
 
     assert_empty(macrolanguages.reject { |l| l.macrolanguage.nil? })
   end
+
+  def test_iso_639_5_collective_codes_are_included
+    collective_codes = %i[aav afa alg alv apa aqa aql art ath auf aus awd azc bad bai bat ber bih bnt btk cai cau cba
+                          ccn ccs cdc cdd cel cmc cpe cpf cpp crp csu cus day dmn dra egx esx euq fiu fox gem gme gmq
+                          gmw grk hmx hok hyx iir ijo inc ine ira iro itc jpx kar kdo khi kro map mkh mno mun myn nah
+                          nai ngf nic nub omq omv oto paa phi plf poz pqe pqw pra qwe roa sai sal sdv sem sgn sio sit
+                          sla smi son sqj ssa syd wak wen xgn xnd ypk zhx zle zls zlw znd]
+
+    assert(collective_codes.all? do |collective_code|
+             ::Languages.all.map(&:alpha3).include? collective_code
+           end)
+  end
 end
+# rubocop:enable Metrics/ClassLength

@@ -22,7 +22,6 @@ module Languages
     alias iso639_5 iso639_2
 
     alias alpha2 iso639_1
-    alias alpha3 iso639_3
     alias alpha3_bibliographic iso639_2b
     alias alpha3_terminology iso639_2t
 
@@ -57,6 +56,10 @@ module Languages
 
     def <=>(other)
       other.iso639_3 <=> iso639_3
+    end
+
+    def alpha3
+      iso639_3 || iso639_2t || iso639_2b
     end
   end
 end
