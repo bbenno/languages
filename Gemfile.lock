@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    human_languages (0.7.0)
+    human_languages (0.8.0)
 
 GEM
   remote: https://rubygems.org/

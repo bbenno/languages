@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2024-02-05
+
+### Added
+
+- Support / Tests for Ruby 3.3 (thanks to [@sandbergja](https://github.com/sandbergja))
+
 ## [0.7.0] - 2023-03-08
 
 ### Added
