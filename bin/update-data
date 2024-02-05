@@ -3,14 +3,18 @@
 
 require 'net/http'
 
-def download_file(filename)
-  src = URI.parse("https://iso639-3.sil.org/sites/iso639-3/files/downloads/#{filename}.tab")
-  dest = "#{__dir__}/../data/#{filename}.tsv"
+def download_file(url)
+  src = URI.parse(url)
+  filename = url.split('/').last.gsub('.tab', '.tsv')
+  dest = "#{__dir__}/../data/#{filename}"
   File.write(dest, Net::HTTP.get(src))
 end
 
 # Download ISO 639-3 data
-download_file('iso-639-3')
+download_file('https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab')
 
 # Download macrolanguage data
-download_file('iso-639-3-macrolanguages')
+download_file('https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3-macrolanguages.tab')
+
+# Download ISO 639-5 data
+download_file('https://id.loc.gov/vocabulary/iso639-5.tsv')

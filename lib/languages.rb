@@ -5,6 +5,7 @@ require 'csv'
 require_relative 'languages/version'
 require_relative 'languages/constants'
 require_relative 'languages/language'
+require_relative 'languages/collective'
 
 # Provides living, extinct, ancient, historic, and constructed languages, specified in ISO 639-3
 module Languages
@@ -92,7 +93,10 @@ module Languages
   @@data = load_tsv_data('iso-639-3.tsv') # rubocop:disable Style/ClassVars
            .map { |row| row.to_h.transform_keys { |k| k.downcase.to_sym } }
            .each_with_object({}) { |l, h| h[l[:id].to_sym] = Language.new(l) }
-           .freeze
+
+  collective_codes = load_tsv_data('iso639-5.tsv').to_h { |row| [row['code'].to_sym, Collective.new(row)] }
+  @@data.merge! collective_codes
+  @@data.freeze
 
   load_tsv_data('iso-639-3-macrolanguages.tsv')
     # Ignore deprecated mappings (i.e. row[2] = 'R')

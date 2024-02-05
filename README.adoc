@@ -52,9 +52,11 @@ russian = Languages['Russian'] # Languages can be retrieved via reference name, 
 klingon = Languages['KLINgon'] # weird casing, but still works
 
 invalid = Languages[:invalid]  # invalid or unknown names or ISO codes returns nil
+
+mayan_languages = Languages[:myn] # You can also access ISO 639-5 collective codses
 ----
 
-.Get all ISO 639-3 languages
+.Get all ISO 639-3 languages and ISO 639-5 collective language codes
 [source]
 Languages.all
 
@@ -104,7 +106,7 @@ language = Language[:fr]
 
 language.name                 # => French
 language.alpha2               # => :fr   (alias for #iso639_1)
-language.alpha3               # => :fra  (alias for #iso639_3)
+language.alpha3               # => :fra
 language.alpha3_bibliographic # => :fre  (alias for #iso_639_2b)
 language.alpha3_terminology   # => :fra  (alias for #iso_639_2t)
 language.type                 # => :living
@@ -136,39 +138,45 @@ macrolanguage.macrolanguage # => nil
 Why to build another gem for ISO 639?
 
 .Overview
-[%header,cols="2,1,2,2,3"]
+[%header,cols="2,1,2,2,2,3"]
 |===
 |Gem
 |ISO 639-1/-2
 |ISO 639-3
+|ISO 639-5
 |Translations
 |Data Storage
 
 |https://rubygems.org/gems/iso639[iso639]
 |✅
 |❌
+|✅
 |French
 |Collection of Hashes
 
 |https://rubygems.org/gems/iso-639[iso-639]
 |✅
 |❌
+|✅
 |French
 |Array of Arrays
 
 |https://rubygems.org/gems/iso-639-data[iso-639-data]
 |✅
 |(✅) only scope individual
+|✅
 |French for ISO 639-2
 |Hash of Hashes
 
 |https://rubygems.org/gems/language_list[language_list]
 |✅
 |(✅) only scope individual
+|❌
 |-
 |Array of Language-Objects
 
 |https://rubygems.org/gems/human_languages[human_languages]
+|✅
 |✅
 |✅
 |-
