@@ -4,7 +4,7 @@ Upstream-Contact: Benno Bielmeier <git@bbenno.com>
 Source: https://github.com/bbenno/languages
 
 Files: *
-Copyright: 2022 Benno Bielmeier <git@bbenno.com>
+Copyright: 2022-2024 Benno Bielmeier <git@bbenno.com>
 License: MIT
 
 Files: data/*
