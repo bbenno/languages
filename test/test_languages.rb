@@ -12,6 +12,15 @@ class TestLanguages < Minitest::Test
       languages = ::Languages.public_send(type)
 
       assert_kind_of Enumerable, languages
+
+      # Skip object type validation for ancient languages.
+      # As of 2024-11-21 there are no ancient languages present
+      # and therefore we would check whether NilClass is instance of Language.
+      #
+      # See also:
+      # https://iso639-3.sil.org/code_tables/639/data?field_iso639_cd_st_mmbrshp_639_1_tid=94671&field_iso639_language_type_tid=31
+      return if type == 'ancient'
+
       assert_instance_of ::Languages::Language, languages.first
     end
   end
