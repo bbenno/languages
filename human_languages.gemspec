@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = 'ISO 639-3 is a set of codes that defines three-letter identifiers for all known human languages.'
   spec.homepage = 'https://github.com/bbenno/languages'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 2.7.0'
+  spec.required_ruby_version = '>= 3.1.0'
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
