@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.1] - 2024-11-21
+
+### Fixed
+
+- Changelog structure
+
+## [0.9.0] - 2024-11-21
+
 ### Changed
 
 - Update ISO 639 data incorporating approved changes of [2023 series](https://iso639-3.sil.org/sites/iso639-3/files/reports/2023%20Summary%20of%20Outcomes.pdf), [2024 Quarter 2](https://iso639-3.sil.org/sites/iso639-3/files/reports/2024%20Quarter%202%20639%20MA%20newsletter.pdf), and [2024 Quater 3](https://iso639-3.sil.org/sites/iso639-3/files/reports/2024%20Quarter%203%20639%20MA%20newsletter.pdf)
