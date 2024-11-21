@@ -16,7 +16,7 @@ module Languages
     end
 
     extend Gem::Deprecate
-    deprecate :ancient, :none, 2025, 03
+    deprecate :ancient, :none, 2025, 3
 
     SCOPES.each do |scope|
       # prevent ambiguity of scope "special" and type "special"
