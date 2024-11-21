@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update ISO 639 data incorporating approved changes of [2023 series](https://iso639-3.sil.org/sites/iso639-3/files/reports/2023%20Summary%20of%20Outcomes.pdf), [2024 Quarter 2](https://iso639-3.sil.org/sites/iso639-3/files/reports/2024%20Quarter%202%20639%20MA%20newsletter.pdf), and [2024 Quater 3](https://iso639-3.sil.org/sites/iso639-3/files/reports/2024%20Quarter%203%20639%20MA%20newsletter.pdf)
+
+### Deprecated
+
+- Deprecate `Languages.ancient` as this "type of individual languages" has been removed by the maintenance agency and (probably) merged with extinct type.
+
+### Removed
+
+- Support for Ruby v2.7
+- Support for Ruby v3.0
+
 ## [0.8.0] - 2024-02-05
 
 ### Added
