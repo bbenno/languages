@@ -9,7 +9,11 @@ class TestLanguages < Minitest::Test
 
   ::Languages::TYPES.each do |type|
     define_method "test_it_provides_scope_for_type_#{type}" do
-      languages = ::Languages.public_send(type)
+      languages = nil
+
+      Gem::Deprecate.skip_during do
+        languages = ::Languages.public_send(type)
+      end
 
       assert_kind_of Enumerable, languages
 
@@ -23,6 +27,10 @@ class TestLanguages < Minitest::Test
 
       assert_instance_of ::Languages::Language, languages.first
     end
+  end
+
+  def test_deprecation_warning_for_type_ancient
+    assert_output(/.*/, /ancient is deprecated/) { ::Languages.ancient }
   end
 
   ::Languages::SCOPES.each do |scope|
