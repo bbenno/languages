@@ -2,11 +2,13 @@ PATH
   remote: .
   specs:
     human_languages (0.8.0)
+      csv (~> 3.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    csv (3.3.0)
     json (2.8.2)
     language_server-protocol (3.17.0.3)
     minitest (5.25.1)
@@ -50,4 +52,4 @@ DEPENDENCIES
   rubocop-rake (~> 0.6.0)
 
 BUNDLED WITH
-   2.3.7
+   2.5.6
