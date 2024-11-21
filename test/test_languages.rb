@@ -9,11 +9,28 @@ class TestLanguages < Minitest::Test
 
   ::Languages::TYPES.each do |type|
     define_method "test_it_provides_scope_for_type_#{type}" do
-      languages = ::Languages.public_send(type)
+      languages = nil
+
+      Gem::Deprecate.skip_during do
+        languages = ::Languages.public_send(type)
+      end
 
       assert_kind_of Enumerable, languages
+
+      # Skip object type validation for ancient languages.
+      # As of 2024-11-21 there are no ancient languages present
+      # and therefore we would check whether NilClass is instance of Language.
+      #
+      # See also:
+      # https://iso639-3.sil.org/code_tables/639/data?field_iso639_cd_st_mmbrshp_639_1_tid=94671&field_iso639_language_type_tid=31
+      return if type == 'ancient'
+
       assert_instance_of ::Languages::Language, languages.first
     end
+  end
+
+  def test_deprecation_warning_for_type_ancient
+    assert_output(/.*/, /ancient is deprecated/) { ::Languages.ancient }
   end
 
   ::Languages::SCOPES.each do |scope|
