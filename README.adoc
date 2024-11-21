@@ -8,7 +8,7 @@ image:https://badge.fury.io/rb/human_languages.svg["Gem Version", link="https://
 image:https://img.shields.io/maintenance/yes/2024[Maintenance]
 image:https://github.com/bbenno/languages/actions/workflows/main.yml/badge.svg[link="https://github.com/bbenno/languages/actions/workflows/main.yml"]
 
-Simple, dependency-less gem providing all known human languagesfootnote:[This includes all individual languages already accounted for in ISO 639-2 as well as extinct, ancient, constructed, and historical languages.] defined in ISO 639-3
+Simple, dependency-less gem providing all known human languagesfootnote:[This includes all individual languages already accounted for in ISO 639-2 as well as extinct, constructed, and historical languages.] defined in ISO 639-3
 
 The ISO code set in link:data/[data/] is taken from the official ISO 639-3 registration authority (ISO 639-3/RA) https://iso639-3.sil.org/[SIL International].
 
@@ -77,7 +77,6 @@ Languages.search('search_pattern', case_sensitive: false)
 [source]
 ----
 # By scope
-Languages.ancient
 Languages.constructed
 Languages.extinct
 Languages.historical
@@ -92,7 +91,7 @@ Languages.special_languages
 
 .Further custom language selections can be implemented using `Languages.all`
 [source]
-Languages.all.select { |l| %w[ancient historical].include?(l.type) }
+Languages.all.select { |l| %w[extinct historical].include?(l.type) }
 
 === Data Objects
 
