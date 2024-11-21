@@ -36,8 +36,9 @@ module Languages
       end
     end
 
-    def search(pattern, case_sensitive: true)
-      pattern = Regexp.new(pattern, Regexp::IGNORECASE).freeze unless case_sensitive
+    def search(pattern)
+      raise(ArgumentError, 'Pattern must be a Regexp') unless pattern.is_a?(Regexp)
+
       all.select { |l| l.name.match? pattern }
     end
 

@@ -3,6 +3,10 @@
 require 'test_helper'
 
 class TestLanguages < Minitest::Test
+  def setup
+    @search_pattern = /Germ/
+  end
+
   def test_that_it_has_a_version_number
     refute_nil ::Languages::VERSION
   end
@@ -86,15 +90,13 @@ class TestLanguages < Minitest::Test
   end
 
   def test_search_provides_enumerable
-    assert_kind_of Enumerable, ::Languages.search('Japanese')
+    assert_kind_of Enumerable, ::Languages.search(@search_pattern)
   end
 
-  def test_search_with_string_pattern
-    pattern = 'Japanese'
-    search_result = ::Languages.search(pattern)
+  def test_search_with_string_pattern_fails
+    pattern = @search_pattern.source
 
-    assert(search_result.map(&:name).all? { |n| n.match?(pattern) })
-    refute((Languages.all - search_result).map(&:name).any? { |n| n.match?(pattern) })
+    assert_raises(ArgumentError) { ::Languages.search(pattern) }
   end
 
   def test_search_with_regex_pattern
@@ -105,30 +107,16 @@ class TestLanguages < Minitest::Test
     refute((Languages.all - search_result).map(&:name).any? { |n| n.match?(pattern) })
   end
 
-  def test_search_is_case_sensitive
-    pattern1 = 'Germ'
-    pattern2 = pattern1.downcase
-    search_result1 = ::Languages.search(pattern1)
-    search_result2 = ::Languages.search(pattern2)
+  def test_search_can_be_case_insensitive
+    case_sensitive_pattern = /tib/
+    case_insensitive_pattern = Regexp.new(case_sensitive_pattern.source, Regexp::IGNORECASE)
 
-    refute_equal(search_result1.count, search_result2.count)
-  end
+    case_sensitive_result = ::Languages.search(case_sensitive_pattern)
+    case_insensitive_search_result = ::Languages.search(case_insensitive_pattern)
 
-  def test_search_can_be_case_sensitive_if_specified
-    pattern1 = 'Germ'
-    pattern2 = /germ/i
-    search_result1 = ::Languages.search(pattern1)
-    search_result2 = ::Languages.search(pattern2)
-
-    assert_equal(search_result1.count, search_result2.count)
-  end
-
-  def test_search_is_case_insensitive_if_specified
-    pattern = 'Germ'
-    search_result1 = ::Languages.search(pattern)
-    search_result2 = ::Languages.search(pattern, case_sensitive: false)
-
-    assert_equal(search_result1.count, search_result2.count)
+    # case sensitive result only contains "Celtiberian"
+    # case insensitive result additionaly contains "Tibet"
+    refute_equal(case_insensitive_search_result, case_sensitive_result)
   end
 
   def test_reference_to_macrolanguage

@@ -58,19 +58,18 @@ invalid = Languages[:invalid]  # invalid or unknown names or ISO codes returns n
 [source]
 Languages.all
 
-.Get languages by name
+.Get languages by name (regexp search)
 [source]
 ----
-Languages.search "^Germ"
+Languages.search /Germ/i
 Languages.search /\AJapan/
 ----
 
 [CAUTION]
 --
-Passing a string to `Languages.search` results in case-sensitive search.
-If case-insensitive search is intended, use ignorecase regexp like `/search_pattern/i` or pass optional `case_sensitive` parameter.
-[source]
-Languages.search('search_pattern', case_sensitive: false)
+Searching languages by name is only allowed via `Regexp` that has been prepared and validated (if it comes from a untrusted user) in terms of case sensitivity and security / timeout.
+The support of passing search pattern of type String has been removed in v0.9.0.
+See https://github.com/bbenno/languages/pull/123[#123] for more details.
 --
 
 .Since ISO 639-3 categorizes the languages by scope and type, one can filter by them
