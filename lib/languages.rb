@@ -16,6 +16,7 @@ module Languages
     end
 
     extend Gem::Deprecate
+
     deprecate :ancient, :none, 2025, 3
 
     SCOPES.each do |scope|
