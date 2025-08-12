@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    human_languages (0.9.1)
+    human_languages (0.10.0)
 
 GEM
   remote: https://rubygems.org/
@@ -58,4 +58,4 @@ DEPENDENCIES
   rubocop-rake (~> 0.7.1)
 
 BUNDLED WITH
-   2.5.6
+   2.6.9
