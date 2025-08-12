@@ -2,3 +2,8 @@
 inputs:
   nixpkgs:
     url: github:NixOS/nixpkgs
+  nixpkgs-ruby:
+    url: github:bobvanderlinden/nixpkgs-ruby
+    inputs:
+      nixpkgs:
+        follows: nixpkgs
