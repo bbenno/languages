@@ -1,0 +1,16 @@
+version = 1
+SPDX-PackageName = "languages"
+SPDX-PackageSupplier = "Benno Bielmeier <git@bbenno.com>"
+SPDX-PackageDownloadLocation = "https://github.com/bbenno/languages"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022-2025 Benno Bielmeier <git@bbenno.com>"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "data/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 SIL International <iso639-3@sil.org>"
+SPDX-License-Identifier = "LicenseRef-ISO639-3ToU"
