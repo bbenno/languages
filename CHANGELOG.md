@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Support for Ruby 3.1 as it is EOL since 26 March 2025.
+
+### Changed
+
+- Update ISO 639 data incorporating approved changes
+  - [2024 Quarter 4](https://iso639-3.sil.org/sites/iso639-3/files/reports/ISO%20639_MA%202024%20Q4%20January%202025%20newsletter.pdf)
+    - Adopted [2023-006](https://iso639-3.sil.org/request/2023-006): Create new language "[ynb] Yamben"
+  - [2025 April](https://iso639-3.sil.org/sites/iso639-3/files/reports/Issue%2004%20April%202025%20ISO%20639%20MA%20Newsletter.pdf)
+    - Adopted [2024-001](https://iso639-3.sil.org/request/2024-001): Update language "[kci] Ngyian"
+    - Adopted [2024-003](https://iso639-3.sil.org/request/2024-003): Create new new language "[oak] Noakhali"
+    - Partially adopted [2024-002](https://iso639-3.sil.org/request/2024-002): Update language "[new] Nepal Bhasa"
+  - [2025 July](https://iso639-3.sil.org/sites/iso639-3/files/reports/Issue%2005%20July%202025%20ISO%20639%20MA%20Newsletter.pdf)
+    - Adopted [2024-006](https://iso639-3.sil.org/request/2024-006): Update language "[zmp] Mbuun"
+    - Adopted [2024-010](https://iso639-3.sil.org/request/2024-010): Update language "[squ] Squamish"
+    - Adopted [2024-011](https://iso639-3.sil.org/request/2024-011): Update language "[haa] Hän"
+    - Adopted [2024-012](https://iso639-3.sil.org/request/2024-012): Update language "[clm] Klallam"
+    - Adopted [2024-013](https://iso639-3.sil.org/request/2024-013): Update language "[shs] Shuswap"
+    - Adopted [2024-014](https://iso639-3.sil.org/request/2024-014): Update language "[thp] Thompson"
+    - Adopted [2024-015](https://iso639-3.sil.org/request/2024-015): Update language "[atj] Atikamekw"
+    - Adopted [2024-016](https://iso639-3.sil.org/request/2024-016): Update language "[tht] Tahltan"
+    - Adopted [2024-017](https://iso639-3.sil.org/request/2024-017): Update language "[asb] Assiniboine"
+    - Adopted [2024-018](https://iso639-3.sil.org/request/2024-018): Update language "[clc] Chilcotin"
+    - Adopted [2024-019](https://iso639-3.sil.org/request/2024-019): Update language "[sec] Sechelt"
+    - Adopted [2024-020](https://iso639-3.sil.org/request/2024-020): Update language "[kwk] Kwak'wala"
+    - Adopted [2025-018](https://iso639-3.sil.org/request/2025-018): Update language "[mhn] Mòcheno"
+
+### Fixed
+
 ## [0.9.1] - 2024-11-21
 
 ### Fixed
