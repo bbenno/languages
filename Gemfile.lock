@@ -1,12 +1,14 @@
 PATH
   remote: .
   specs:
-    human_languages (0.10.0)
+    human_languages (0.10.1)
+      csv (~> 3.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
+    csv (3.3.5)
     json (2.13.2)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
