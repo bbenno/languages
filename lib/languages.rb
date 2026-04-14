@@ -96,7 +96,7 @@ module Languages
 
   @@data = load_tsv_data('iso-639-3.tsv') # rubocop:disable Style/ClassVars
            .map { |row| row.to_h.transform_keys { |k| k.downcase.to_sym } }
-           .each_with_object({}) { |l, h| h[l[:id].to_sym] = Language.new(l) }
+           .to_h { |l| [l[:id].to_sym, Language.new(l)] }
            .freeze
 
   load_tsv_data('iso-639-3-macrolanguages.tsv')
