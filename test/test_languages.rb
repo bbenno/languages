@@ -119,6 +119,18 @@ class TestLanguages < Minitest::Test
     refute_equal(case_insensitive_search_result, case_sensitive_result)
   end
 
+  def test_names_returns_strings
+    assert(::Languages.names.all? { |n| n.is_a?(String) && !n.empty? })
+  end
+
+  def test_alpha2_codes_returns_symbols
+    assert(::Languages.alpha2_codes.all? { |c| c.is_a?(Symbol) && c.length == 2 })
+  end
+
+  def test_alpha3_codes_returns_symbols
+    assert(::Languages.alpha3_codes.all? { |c| c.is_a?(Symbol) && c.length == 3 })
+  end
+
   def test_reference_to_macrolanguage
     language = ::Languages[:wuu]
 

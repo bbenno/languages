@@ -19,6 +19,33 @@ class TestLanguage < Minitest::Test
     assert_instance_of String, @language.name
   end
 
+  def test_to_s_returns_name_as_string
+    assert_equal 'Klingon', @language.to_s
+  end
+
+  def test_comparison_is_ascending_by_iso639_3
+    lang_a = ::Languages::Language.new(id: 'aaa', part2b: nil, part2t: nil, part1: nil,
+                                       scope: 'I', language_type: 'L', ref_name: 'A')
+    lang_b = ::Languages::Language.new(id: 'zzz', part2b: nil, part2t: nil, part1: nil,
+                                       scope: 'I', language_type: 'L', ref_name: 'Z')
+
+    assert_operator lang_a, :<, lang_b
+  end
+
+  def test_aliases
+    assert_equal @language.iso639_3, @language.alpha3
+    assert_equal @language.iso639_2t, @language.iso639_2
+    assert_equal @language.iso639_2t, @language.alpha3_terminology
+    assert_equal @language.iso639_2b, @language.alpha3_bibliographic
+  end
+
+  def test_alpha2_alias
+    # The Klingon fixture has no ISO 639-1 code, so a real language with an alpha2 is needed.
+    german = ::Languages[:deu]
+
+    assert_equal german.iso639_1, german.alpha2
+  end
+
   def test_equality_depends_on_iso639_3
     other_language = ::Languages::Language.new(id: 'tlh', part2b: nil, part2t: nil, part1: nil, scope: nil,
                                                language_type: nil, ref_name: nil)
