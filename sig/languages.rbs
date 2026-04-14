@@ -6,7 +6,7 @@ module Languages
 
   @data: Hash[Symbol, Language]
 
-  def self?.[]: (String | Symbol) -> Language?
+  def self?.[]: (String | Symbol) -> (Language | LanguageFamily)?
   def self?.search: (Regexp pattern) -> Array[Language]
 
   def self?.all: () -> Array[Language]
@@ -30,7 +30,7 @@ module Languages
   def self?.load_language_families: () -> Hash[Symbol, LanguageFamily]
 
   def self?.get_by_alpha2: (Symbol key) -> Language?
-  def self?.get_by_alpha3: (Symbol key) -> Language?
+  def self?.get_by_alpha3: (Symbol key) -> (Language | LanguageFamily)?
   def self?.get_by_name: (String name) -> Language?
   def self?.load_tsv_data: (String filename) -> untyped
 

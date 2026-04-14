@@ -64,4 +64,11 @@ class TestLanguageFamily < Minitest::Test
   def test_all_families_have_alpha3_code
     assert(::Languages.language_families.all? { |f| f.iso639_5.length == 3 })
   end
+
+  def test_lookup_by_iso639_5_code
+    mayan = ::Languages[:myn]
+
+    assert_instance_of ::Languages::LanguageFamily, mayan
+    assert_equal 'Mayan languages', mayan.name
+  end
 end

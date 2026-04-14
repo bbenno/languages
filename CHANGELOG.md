@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `Languages::LanguageFamily` class representing ISO 639-5 collective language codes (families and groups)
-- `Languages.language_families` returning all 115 entries from ISO 639-5
+- `Languages::LanguageFamily` class representing ISO 639-5 collective language codes (families and groups), with English (`name`) and French (`name_fr`) reference names
+- `Languages.language_families` returning all 115 ISO 639-5 entries
+- `Languages[]` now resolves ISO 639-5 codes (e.g. `Languages[:myn]` returns the Mayan languages family)
 
 ### Fixed
 

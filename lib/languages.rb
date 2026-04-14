@@ -75,11 +75,11 @@ module Languages
       all.detect { |l| l.iso639_1 == key }
     end
 
-    # Returns language associated with ISO 639-2 or ISO 639-3 identifier
-    # @param [Symbol] key ISO 639-2 or ISO 639-3 identifier
-    # @return [Language,NilClass] language with associated with the identifier; otherwise +nil+
+    # Returns language or language family associated with an ISO 639-2, 639-3, or 639-5 identifier
+    # @param [Symbol] key ISO 639-2, ISO 639-3, or ISO 639-5 identifier
+    # @return [Language,LanguageFamily,NilClass] object associated with the identifier; otherwise +nil+
     def get_by_alpha3(key)
-      @data[key] || all.detect { |l| l.iso639_2b == key || l.iso639_2t == key }
+      @data[key] || all.detect { |l| l.iso639_2b == key || l.iso639_2t == key } || @language_families[key]
     end
 
     # Returns language associated with ISO 639-3 reference name
