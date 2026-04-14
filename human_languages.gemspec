@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Benno Bielmeier']
   spec.email = ['git@bbenno.com']
 
-  spec.summary = 'ISO 639-3 languages'
+  spec.summary = 'All known human languages from ISO 639-3, with no runtime dependencies'
   spec.description = 'ISO 639-3 is a set of codes that defines three-letter identifiers for all known human languages.'
   spec.homepage = 'https://github.com/bbenno/languages'
   spec.license = 'MIT'
