@@ -20,6 +20,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
+    asciidoctor (2.0.26)
     ast (2.4.3)
     base64 (0.3.0)
     bigdecimal (4.1.1)
@@ -121,6 +122,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  asciidoctor (~> 2.0)
   human_languages!
   minitest (~> 6.0)
   rake (~> 13.3)
