@@ -5,17 +5,16 @@ module Languages
   class Language
     include Comparable
 
-    attr_reader :iso639_1, :iso639_2b, :iso639_2t, :iso639_3, :scope, :type, :name, :macrolanguage # , :comment
+    attr_reader :iso639_1, :iso639_2b, :iso639_2t, :iso639_3, :scope, :type, :name, :macrolanguage
 
-    def initialize(csv_attributes) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+    def initialize(csv_attributes)
       @iso639_3 = csv_attributes.fetch(:id).to_sym
       @iso639_2b = csv_attributes.fetch(:part2b)&.to_sym
       @iso639_2t = csv_attributes.fetch(:part2t)&.to_sym
       @iso639_1 = csv_attributes.fetch(:part1)&.to_sym
-      @scope = SCOPES.detect { |s| s.chr.upcase == csv_attributes.fetch(:scope) }&.to_sym
-      @type = TYPES.detect { |t| t.chr.upcase == csv_attributes.fetch(:language_type) }&.to_sym
+      @scope = parse_scope(csv_attributes.fetch(:scope))
+      @type = parse_type(csv_attributes.fetch(:language_type))
       @name = csv_attributes.fetch(:ref_name)
-      # @comment = csv_attributes.fetch(:comment)
     end
 
     alias iso639_2 iso639_2t
@@ -57,6 +56,20 @@ module Languages
 
     def <=>(other)
       iso639_3 <=> other.iso639_3
+    end
+
+    private
+
+    # @param [String, nil] code Single uppercase character representing the scope in ISO 639 data
+    # @return [Symbol, nil]
+    def parse_scope(code)
+      SCOPES.detect { |s| s.chr.upcase == code }&.to_sym
+    end
+
+    # @param [String, nil] code Single uppercase character representing the language type in ISO 639 data
+    # @return [Symbol, nil]
+    def parse_type(code)
+      TYPES.detect { |t| t.chr.upcase == code }&.to_sym
     end
   end
 end
