@@ -6,7 +6,7 @@ SPDX-PackageDownloadLocation = "https://github.com/bbenno/languages"
 [[annotations]]
 path = "**"
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2022-2025 Benno Bielmeier <git@bbenno.com>"
+SPDX-FileCopyrightText = "2022-2026 Benno Bielmeier <git@bbenno.com>"
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
