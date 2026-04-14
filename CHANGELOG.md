@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- `Languages.ancient` (deprecated since v0.9.0; the ancient language type was removed by the ISO 639-3 maintenance agency)
 - Support for Ruby 3.2
 
 ## [0.10.1] - 2025-08-12

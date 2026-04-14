@@ -18,7 +18,6 @@ module Languages
   def self?.macrolanguages: () -> Array[Language]
   def self?.individual_languages: () -> Array[Language]
 
-  def self?.ancient: () -> Array[Language]
   def self?.constructed: () -> Array[Language]
   def self?.extinct: () -> Array[Language]
   def self?.historical: () -> Array[Language]

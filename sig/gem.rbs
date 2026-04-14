@@ -1,7 +1,0 @@
-module Gem
-  module Deprecate
-    def self.skip_during: () { () -> void } -> void
-
-    def deprecate: (Symbol name, Symbol | String repl, Integer year, Integer month) -> void
-  end
-end
