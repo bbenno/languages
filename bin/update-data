@@ -14,3 +14,7 @@ download_file('iso-639-3')
 
 # Download macrolanguage data
 download_file('iso-639-3-macrolanguages')
+
+# Download ISO 639-5 data (Library of Congress)
+iso639_5_src = URI.parse('http://id.loc.gov/vocabulary/iso639-5.tsv')
+File.write("#{__dir__}/../data/iso-639-5.tsv", Net::HTTP.get(iso639_5_src))

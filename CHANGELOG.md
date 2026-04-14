@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `Languages::LanguageFamily` class representing ISO 639-5 collective language codes (families and groups)
+- `Languages.language_families` returning all 115 entries from ISO 639-5
+
 ### Fixed
 
 - `Language#<=>` now sorts ascending by ISO 639-3 code (was reversed)
