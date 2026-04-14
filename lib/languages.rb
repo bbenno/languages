@@ -5,6 +5,7 @@ require 'csv'
 require_relative 'languages/version'
 require_relative 'languages/constants'
 require_relative 'languages/language'
+require_relative 'languages/language_family'
 
 # Provides living, extinct, ancient, historic, and constructed languages, specified in ISO 639-3
 module Languages
@@ -60,6 +61,11 @@ module Languages
       all.map(&:alpha3)
     end
 
+    # Returns all language families and groups defined in ISO 639-5
+    def language_families
+      @language_families.values
+    end
+
     private
 
     # Returns language associated with ISO 639-1 identifier
@@ -69,11 +75,11 @@ module Languages
       all.detect { |l| l.iso639_1 == key }
     end
 
-    # Returns language associated with ISO 639-2 or ISO 639-3 identifier
-    # @param [Symbol] key ISO 639-2 or ISO 639-3 identifier
-    # @return [Language,NilClass] language with associated with the identifier; otherwise +nil+
+    # Returns language or language family associated with an ISO 639-2, 639-3, or 639-5 identifier
+    # @param [Symbol] key ISO 639-2, ISO 639-3, or ISO 639-5 identifier
+    # @return [Language,LanguageFamily,NilClass] object associated with the identifier; otherwise +nil+
     def get_by_alpha3(key)
-      @data[key] || all.detect { |l| l.iso639_2b == key || l.iso639_2t == key }
+      @data[key] || all.detect { |l| l.iso639_2b == key || l.iso639_2t == key } || @language_families[key]
     end
 
     # Returns language associated with ISO 639-3 reference name
@@ -86,7 +92,16 @@ module Languages
     def load_tsv_data(filename)
       CSV.read(File.join(__dir__.to_s, '..', 'data', filename), headers: true, col_sep: "\t")
     end
+
+    def load_language_families
+      load_tsv_data('iso-639-5.tsv')
+        .map { |row| { code: row['code'], name: row['Label (English)'], name_fr: row['Label (French)'] } }
+        .to_h { |attrs| [attrs[:code].to_sym, LanguageFamily.new(attrs)] }
+        .freeze
+    end
   end
+
+  @language_families = load_language_families
 
   @data = load_tsv_data('iso-639-3.tsv')
           .map { |row| row.to_h.transform_keys { |k| k.downcase.to_sym } }

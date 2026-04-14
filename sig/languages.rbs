@@ -6,7 +6,7 @@ module Languages
 
   @data: Hash[Symbol, Language]
 
-  def self?.[]: (String | Symbol) -> Language?
+  def self?.[]: (String | Symbol) -> (Language | LanguageFamily)?
   def self?.search: (Regexp pattern) -> Array[Language]
 
   def self?.all: () -> Array[Language]
@@ -25,10 +25,33 @@ module Languages
   def self?.living: () -> Array[Language]
   def self?.special: () -> Array[Language]
 
+  def self?.language_families: () -> Array[LanguageFamily]
+
+  def self?.load_language_families: () -> Hash[Symbol, LanguageFamily]
+
   def self?.get_by_alpha2: (Symbol key) -> Language?
-  def self?.get_by_alpha3: (Symbol key) -> Language?
+  def self?.get_by_alpha3: (Symbol key) -> (Language | LanguageFamily)?
   def self?.get_by_name: (String name) -> Language?
   def self?.load_tsv_data: (String filename) -> untyped
+
+  class LanguageFamily
+    include Comparable
+
+    attr_reader iso639_5: Symbol
+    attr_reader name: String
+    attr_reader name_fr: String
+
+    alias alpha3 iso639_5
+
+    def initialize: ({code: String, name: String, name_fr: String}) -> void
+
+    def to_s: () -> String
+
+    def ==: (untyped) -> bool
+    alias eql? ==
+    def hash: () -> Integer
+    def <=>: (LanguageFamily) -> Integer?
+  end
 
   class Language
     attr_reader iso639_1: Symbol?
