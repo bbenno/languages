@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-04-15
+
 ### Added
 
 - `Languages::LanguageFamily` class representing ISO 639-5 collective language codes (families and groups), with English (`name`) and French (`name_fr`) reference names
