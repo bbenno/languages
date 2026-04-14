@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `Language#<=>` now sorts ascending by ISO 639-3 code (was reversed)
+- RBS signatures: `Language#scope` and `Language#type` corrected from `String` to `Symbol?`
 
 ## [0.10.1] - 2025-08-12
 
