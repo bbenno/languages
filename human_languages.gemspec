@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = spec.homepage
   spec.metadata['changelog_uri'] = "#{spec.metadata['source_code_uri']}/blob/HEAD/CHANGELOG.md"
   spec.metadata['bugs_uri'] = "#{spec.metadata['source_code_uri']}/issues"
+  spec.metadata['documentation_uri'] = 'https://bbenno.github.io/languages'
   spec.metadata['rubygems_mfa_required'] = 'true'
   spec.metadata['github_repo'] = 'git@github.com:bbenno/languages.git'
 
