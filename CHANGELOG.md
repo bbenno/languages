@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `Language#<=>` now sorts ascending by ISO 639-3 code (was reversed)
+
 ## [0.10.1] - 2025-08-12
 
 ### Fixed
