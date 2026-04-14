@@ -1,0 +1,37 @@
+= Contributing
+Benno Bielmeier
+
+== Setup
+
+....
+$ git clone https://github.com/bbenno/languages.git
+$ cd languages
+$ bin/setup
+....
+
+Alternatively, use https://devenv.sh[devenv] (Nix) for a reproducible environment:
+
+....
+$ devenv shell
+....
+
+Run tests and linter:
+
+....
+$ bundle exec rake
+....
+
+== Updating ISO 639 data
+
+....
+$ bin/update-data
+....
+
+== Submitting changes
+
+. Open an issue before starting non-trivial work.
+. Fork, branch, and commit using https://www.conventionalcommits.org[Conventional Commits].
+. Update `CHANGELOG.md` under `[Unreleased]`.
+. Open a pull request against `master`.
+
+Bug reports and pull requests are welcome at https://github.com/bbenno/languages.
