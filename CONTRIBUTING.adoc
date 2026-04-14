@@ -27,6 +27,9 @@ Run type checking:
 $ bundle exec steep check
 ....
 
+Test coverage is measured with https://github.com/simplecov-ruby/simplecov[SimpleCov] and reported after each `rake test` run.
+Coverage output is written to `coverage/`.
+
 == Updating ISO 639 data
 
 ....
