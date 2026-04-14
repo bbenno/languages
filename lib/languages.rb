@@ -11,20 +11,20 @@ module Languages
   class << self
     TYPES.each do |type|
       define_method type do
-        all.select { |l| l.public_send("#{type}?") }
+        all.select { |l| l.public_send("#{type}?") } # steep:ignore NoMethod
       end
     end
 
     extend Gem::Deprecate
 
-    deprecate :ancient, :none, 2025, 3
+    deprecate :ancient, :none, 2025, 3 # steep:ignore NoMethod
 
     SCOPES.each do |scope|
       # prevent ambiguity of scope "special" and type "special"
       scope = "#{scope}_language" unless scope.end_with? 'language'
 
       define_method "#{scope}s" do
-        all.select { |l| l.public_send("#{scope}?") }
+        all.select { |l| l.public_send("#{scope}?") } # steep:ignore NoMethod
       end
     end
 
@@ -84,7 +84,7 @@ module Languages
     end
 
     def load_tsv_data(filename)
-      CSV.read(File.join(__dir__, '..', 'data', filename), headers: true, col_sep: "\t")
+      CSV.read(File.join(__dir__.to_s, '..', 'data', filename), headers: true, col_sep: "\t")
     end
   end
 

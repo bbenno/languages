@@ -1,11 +1,10 @@
 module Languages
   VERSION: String
-  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
 
   TYPES: Array[String]
   SCOPES: Array[String]
 
-  @@data: Array[Language]
+  @data: Hash[Symbol, Language]
 
   def self?.[]: (String | Symbol) -> Language?
   def self?.search: (Regexp pattern) -> Array[Language]
@@ -16,7 +15,7 @@ module Languages
   def self?.alpha3_codes: () -> Array[Symbol]
 
   def self?.special_languages: () -> Array[Language]
-  def self?.macrolanguages:() -> Array[Language]
+  def self?.macrolanguages: () -> Array[Language]
   def self?.individual_languages: () -> Array[Language]
 
   def self?.ancient: () -> Array[Language]
@@ -26,13 +25,18 @@ module Languages
   def self?.living: () -> Array[Language]
   def self?.special: () -> Array[Language]
 
+  def self?.get_by_alpha2: (Symbol key) -> Language?
+  def self?.get_by_alpha3: (Symbol key) -> Language?
+  def self?.get_by_name: (String name) -> Language?
+  def self?.load_tsv_data: (String filename) -> untyped
+
   class Language
     attr_reader iso639_1: Symbol?
     attr_reader iso639_2b: Symbol?
     attr_reader iso639_2t: Symbol?
     attr_reader iso639_3: Symbol
-    attr_reader scope: String
-    attr_reader type: String
+    attr_reader scope: Symbol?
+    attr_reader type: Symbol?
     attr_reader name: String
     attr_reader macrolanguage: Language?
 
@@ -44,13 +48,12 @@ module Languages
     alias alpha3_bibliographic iso639_2b
     alias alpha3_terminology iso639_2t
 
-
-    def initialize: ({id: String, part2b: String?, part2t: String?, part1: String?, scope: "I" | "M" | "S", language_type: "A" | "C" | "E" | "H" | "L" | "S", ref_name: String, comment: String?}) -> void
+    def initialize: ({id: String, part2b: String?, part2t: String?, part1: String?, scope: "I" | "M" | "S", language_type: "A" | "C" | "E" | "H" | "L" | "S", ref_name: String}) -> void
 
     def to_s: () -> String
 
     def special_language?: () -> bool
-    def macrolanguage? :() -> bool
+    def macrolanguage?: () -> bool
     def individual_language?: () -> bool
 
     def ancient?: () -> bool
@@ -63,6 +66,9 @@ module Languages
     def ==: (untyped) -> bool
     alias eql? ==
     def hash: () -> Integer
-    def <=>: (Language) -> Integer
+    def <=>: (Language) -> Integer?
+
+    def parse_scope: (String? code) -> Symbol?
+    def parse_type: (String? code) -> Symbol?
   end
 end

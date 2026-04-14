@@ -31,7 +31,7 @@ module Languages
 
     TYPES.each do |type|
       define_method "#{type}?" do
-        self.type == type.to_sym
+        self.type == type.to_sym # steep:ignore NoMethod
       end
     end
 
@@ -40,7 +40,7 @@ module Languages
       method_name = scope.end_with?('language') ? scope : "#{scope}_language"
 
       define_method "#{method_name}?" do
-        self.scope == scope.to_sym
+        self.scope == scope.to_sym # steep:ignore NoMethod
       end
     end
 
