@@ -7,7 +7,7 @@ gemspec
 
 gem 'asciidoctor', '~> 2.0', require: false # required by yard to render README.adoc
 gem 'minitest', '~> 6.0'
-gem 'rake', '~> 13.3'
+gem 'rake', '~> 13.4'
 gem 'rubocop', '~> 1.86'
 gem 'rubocop-minitest', '~> 0.39.1'
 gem 'rubocop-rake', '~> 0.7.1'
