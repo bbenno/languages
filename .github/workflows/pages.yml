@@ -25,7 +25,7 @@ jobs:
           bundler-cache: true
       - name: Build YARD docs
         run: bundle exec yard doc --output-dir _site
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
 
   deploy:
     needs: build
